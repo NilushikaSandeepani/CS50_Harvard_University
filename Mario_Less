@@ -1,0 +1,50 @@
+#include <cs50.h>
+#include <stdio.h>
+
+int get_height(void);
+void print_bricks(int height);
+
+int main(void)
+{
+    // get the height
+    int height = get_height();
+
+    // print spaces
+    print_bricks(height);
+}
+
+int get_height(void)
+{
+    int height;
+    do
+    {
+        height = get_int("Height: ");
+    }
+    while (1 > height || 8 < height);
+    return height;
+}
+
+void print_bricks(int height)
+{
+    int i;
+    for (i = height; i > 0; i--)
+    {
+        int space = i - 1;         // num of spaces
+        int dash = height - space; // num of bricks
+
+        // print spaces
+        while (space > 0)
+        {
+            printf(" ");
+            space--;
+        }
+
+        // print bricks
+        while (dash > 0)
+        {
+            printf("#");
+            dash--;
+        }
+        printf("\n");
+    }
+}
